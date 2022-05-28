@@ -2,7 +2,7 @@ from sqlite3 import Time
 import eel
 from numpy import block
 import time
-from p import *
+from client import *
 
 
 period = 0.5 

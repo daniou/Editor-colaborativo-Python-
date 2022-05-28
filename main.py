@@ -2,24 +2,20 @@ from sqlite3 import Time
 import eel
 from numpy import block
 import time
+from p import *
 
-from pandas import period_range
 
 period = 0.5 
 lastSend = time.time()
 msg = ""
 
 
-
-def send(msg):
-    print(msg)
-
 def addToMsg(text):
     global msg
     msg+=text
     global lastSend 
     if(time.time()-lastSend > period):
-        send(msg)
+        sendMsg(msg)
         msg =""
         lastSend = time.time()
 

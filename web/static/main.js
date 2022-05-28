@@ -1,7 +1,15 @@
+
 function send()
 {    
-    text = document.getElementById("text").value;
-    text = text.slice(-1);
+    text_area = document.getElementById("text");
+    text = text_area.value;
+    
+    cursor = text_area.selectionStart;
+
+    if(cursor!=0)
+    {
+        text = text.substring(cursor-1,cursor);
+    }
     eel.getText(text);
     setText(text);
 }

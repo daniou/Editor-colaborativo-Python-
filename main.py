@@ -1,29 +1,16 @@
-from flask import Flask, render_template, request
-import jyserver.Flask as jsf
+import eel
+from numpy import block
 
-app = Flask(__name__)
-
-
-@jsf.use(app)
-class App:
-    def __init__(self): 
-        self.text = ""
-    
+msg = ""
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+def takeit(text):
+    print("Unagas "+text)
 
-@app.route('/', methods=['POST'])
-def my_form_post():
-    text = request.form['text']
-    return text
+@eel.expose
+def getText(text):
+    takeit(text)
 
+eel.init('web')
+eel.start('./templates/index.html', mode='chrome', cmdline_args=['--kiosk'])
 
-@app.route('/send')
-def send():
-    return "Hello world"
-
-if __name__ == '__main__':
-    app.run(debug=True)

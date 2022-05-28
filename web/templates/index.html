@@ -9,9 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,900&family=Rubik:wght@500&display=swap" rel="stylesheet">
 
     <!-- css -->
-    <link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet">
+    <link href="../static/style.css" rel="stylesheet">
     <!-- js -->
-    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <script src="/eel.js"></script>
+    <script src="../static/main.js"></script>
+
 
 
     <title>Editor colaborativo👨‍💻</title>
@@ -20,8 +22,8 @@
     <div class="g-container">
         <div class="container">
             <div class="head">
-                <h1 id="title">Editor colaborative</h1>
-                <button class="animated-word" onclick="mostrar()">Nuevo Documento</button>
+                <h1 id="title">Editor colaborativo</h1>
+                <button class="animated-word" download="">Descargar Documento</button>
                 <!-- <nav class="menu">
                     <a href="/html/">Nuevo archivo</a>
                     <a href="/css/">CSS</a>
@@ -30,10 +32,10 @@
                 </nav> -->
             </div>
             <form class = "txt-form" method="POST">
-                <textarea name="text" id="txt-area" class="txt-area" placeholder="¡Escribe aquí! 👨‍💻" onfocus="this.placeholder = ''"
-                onblur="this.placeholder = '¡Escribe aquí! 👨‍💻'" oninput="this.form.submit()" ></textarea>
+                <textarea name="text" id="text" class="txt-area" placeholder="¡Escribe aquí! 👨‍💻" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '¡Escribe aquí! 👨‍💻'" oninput="send()" ></textarea>
             </form>
-           
+           <div id="debugger"></div>
         </div>   
 
     </div>

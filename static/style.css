@@ -84,7 +84,8 @@ li a:hover:not(.active) {
 
 .txt-area{
     color: white;
-    flex-grow: 0.80;
+    height: 100%;
+    width: 100%;
     resize: none;
     font-size: 1.2rem;
     padding: 1rem;
@@ -94,6 +95,11 @@ li a:hover:not(.active) {
     -moz-box-shadow: 10px 10px 86px -17px rgba(0,0,0,0.58);
     box-shadow: 10px 10px 86px -17px rgba(0,0,0,0.58);
     transition: all 0.5s;
+}
+
+.txt-form{
+    width: 100%;
+    flex-grow: 0.80;
 }
 
 .txt-area:focus{

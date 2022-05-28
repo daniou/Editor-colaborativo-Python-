@@ -1,1 +1,1 @@
-# Editor-colaborativo-Python-
+# Editor de texto colaborativo (Python)

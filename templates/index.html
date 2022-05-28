@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,900&family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link href="{{url_for('static', filename = 'style.css')}}" rel="stylesheet">
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="g-container">
+        <div class="container">
+            <div class="head">
+                <h1 id="title">Editor colaborativo</h1>
+                <button class="animated-word" onclick="server.prueba()">Nuevo Documento</button>
+                <!-- <nav class="menu">
+                    <a href="/html/">Nuevo archivo</a>
+                    <a href="/css/">CSS</a>
+                    <a href="/js/">JavaScript</a>
+                    <a href="/python/">Python</a>
+                </nav> -->
+            </div>
+            <textarea name="writting-box" id="txt-area" class="txt-area" placeholder="¡Escribe aquí! 👨‍💻" onfocus="this.placeholder = ''"
+            onblur="this.placeholder = '¡Escribe aquí! 👨‍💻'"  ></textarea>
+        </div>   
+
+    </div>
+
+</body>
+
+</html>

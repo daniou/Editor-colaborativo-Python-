@@ -23,7 +23,6 @@ class Tasks:
         self.taskList.pop(0)
 
     def getNextTask(self):
-        self.nextTaskCompleted()
         return self.taskList[0]
 
 
@@ -46,7 +45,7 @@ class Task:
         self.pointer=args[0]
         self.action=args[1]
         self.content=args[2]
-        self.content=args[3]
+        self.timestamp=args[3]
         # print(f"CONSTRUCTORA TASK {self.id}, {self.path}, {self.action}, {self.content}")
     
     def getFile(self):
@@ -57,6 +56,19 @@ class Task:
 
     def getContent(self):
         return self.content
+    
+    def getPointer(self):
+        return self.content
+
+    def getTimestamp(self):
+        return self.content
 
     def getID(self):
         return self.id
+
+    def print(self):
+        print("TASK: ",self.pointer, self.action, self.content, self.timestamp)
+
+    
+    def toArray(self):
+        return [self.pointer, self.action, self.content, self.timestamp]

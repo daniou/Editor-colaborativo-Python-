@@ -13,7 +13,7 @@ SERVER = socket.gethostbyname(socket.gethostname())
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-PERIOD = 10
+PERIOD = 0.5
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
@@ -35,7 +35,7 @@ def queueTask(task):
 
 #la constructora de task tendra que aceptar la id tambien-----------------------------
 def createTask(id, args):
-    print("CREANDO TAREA")  
+    print("CREANDO TAREA >>>",Task(args).toArray())  
     queueTask(Task(args))
     # print(f"EL USUARIO {id} HA CREADO LA TAREA {args} ")
 
@@ -51,7 +51,7 @@ def listen(conn,addr,id):
     
     print(f"THREAD listening on {SERVER}")
     while handle_client(conn,addr,id):
-        sleep(PERIOD)
+        # sleep(PERIOD)
         print(datetime.datetime.now())
     conn.close()
     print("Se ha cerrado la conexion")

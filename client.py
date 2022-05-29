@@ -58,6 +58,7 @@ def handle_updates():
     
 
 def sendMsg(msg):
+    print("ENVIO TASK  >>>>",msg)
     message = pickle.dumps(msg)
     msg_length = len(message)
     send_length = pickle.dumps(str(msg_length))

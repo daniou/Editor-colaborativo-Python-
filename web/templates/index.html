@@ -13,6 +13,7 @@
     <!-- js -->
     <script src="/eel.js"></script>
     <script src="../static/main.js"></script>
+    <!-- <script src="../static/style.js"></script> -->
 
 
 
@@ -20,7 +21,7 @@
 </head>
 <body>
     <div class="g-container">
-        <div class="container">
+        <div class="container" id="container">
             <div class="head">
                 <h1 id="title">Editor colaborativo</h1>
                 <button class="animated-word" download="">Descargar Documento</button>
@@ -33,7 +34,7 @@
             </div>
             <form class = "txt-form" method="POST">
                 <textarea name="text" id="text" class="txt-area" placeholder="¡Escribe aquí! 👨‍💻" onfocus="this.placeholder = ''"
-                onblur="this.placeholder = '¡Escribe aquí! 👨‍💻'" oninput="send()" ></textarea>
+                onblur="this.placeholder = '¡Escribe aquí! 👨‍💻'"  ></textarea>
             </form>
            <div id="debugger"></div>
         </div>   

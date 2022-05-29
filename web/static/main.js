@@ -4,13 +4,13 @@ function send()
     text_area = document.getElementById("text");
     text = text_area.value;
     
-    cursor = text_area.selectionStart;
+    pointer = text_area.selectionStart;
 
-    if(cursor!=0)
+    if(pointer!=0)
     {
-        text = text.substring(cursor-1,cursor);
+        text = text.substring(pointer-1,pointer);
     }
-    eel.getText(text);
+    eel.getText(pointer,text);
     setText(text);
 }
 

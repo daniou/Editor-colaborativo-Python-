@@ -36,12 +36,14 @@ def sendTasks():
 
 @eel.expose
 def erease(pointer,action):
+    global lastPointer
     print("erease---------->",pointer)
 
     if(not tasks.AreTheretTasksOfType(action)):
         task = Task([pointer,action,"",1])
         tasks.addTask(task) 
     else:
+        print("sdiuhasiuhasiudhbasiudahiuashoiuash{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
         #si el puntero apunta a la siguiente posición no hace falta hacer ningun cambio de cursor
         if pointer == lastPointer-1:
             print("se borra de forma secuencial",tasks.getNextTask().content)

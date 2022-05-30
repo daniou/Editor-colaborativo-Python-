@@ -1,4 +1,6 @@
 
+var del = false;
+var lastPointer=-1;
 document.addEventListener("keyup", KeyCheck); //al presionar una tecla llama keycheck
 function KeyCheck(event)
 {
@@ -31,33 +33,40 @@ function KeyCheck(event)
     
 }
 
-function handleUpdate()
-{
-
-}
-
 function erease(pointer)
 {    
     eel.erease(pointer,"d");
 }
 
-function write(pointer,text)
-{    
-    eel.edit("i",pointer,text);
-    setText(text);
-}
+// function write(pointer,text)
+// {    
+//     eel.edit("i",pointer,text);
+//     setText(text);
+// }
 
 function write2()
-{   
+{           
     text_area = document.getElementById("text");
     text = text_area.value;
     pointer = text_area.selectionStart;
-    if(pointer!=0)
+    if(pointer<lastPointer)
     {
-        text = text.substring(pointer-1,pointer);
+        // alert(pointer," ",lastPointer)
     }
-    eel.edit("i",pointer-1,text);
-    setText(text);
+    else
+    {
+        // alert("eeeepa"+pointer+" "+lastPointer);
+
+        if(pointer!=0)
+        {
+            text = text.substring(pointer-1,pointer);
+        }
+        eel.edit("i",pointer-1,text);
+        
+        setText(text);
+    }
+    lastPointer = pointer;
+
 }
 
 function setText(text)

@@ -1,5 +1,5 @@
 
-document.addEventListener("keypress", KeyCheck); //al presionar una tecla llama keycheck
+document.addEventListener("keyup", KeyCheck); //al presionar una tecla llama keycheck
 function KeyCheck(event)
 {
     var KeyID = event.keyCode;
@@ -13,32 +13,50 @@ function KeyCheck(event)
     switch(KeyID)
     {
         case 8:
-            del(pointer)
+            erease(pointer)
         break; 
-        case 46:
-            supr(pointer)
+        case 37:
+        break;
+        case 38:
+        break;
+        case 39:
+        break;
+        case 40:
         break;
         default:
             write(pointer,String.fromCharCode(KeyID))
+            // write2()
         break;
     }
     
 }
 
-function del(pointer)
-{    
-    eel.edit("delete",pointer);
+function handleUpdate()
+{
+
 }
 
-function supr(pointer)
+function erease(pointer)
 {    
-    eel.edit("supr",pointer);
+    eel.erease(pointer,"d");
 }
-
 
 function write(pointer,text)
 {    
-    eel.edit("insert",pointer,text);
+    eel.edit("i",pointer,text);
+    setText(text);
+}
+
+function write2()
+{   
+    text_area = document.getElementById("text");
+    text = text_area.value;
+    pointer = text_area.selectionStart;
+    if(pointer!=0)
+    {
+        text = text.substring(pointer-1,pointer);
+    }
+    eel.edit("i",pointer,text);
     setText(text);
 }
 

@@ -13,16 +13,9 @@ import time
 period = 0
 lastPointer = 0
 tasks = Tasks()
-addedTask = False
-msg=""
-
-
 
 def resetVariables():
-    global msg
-    global addedTask
-    msg=""
-    addedTask = False
+    pass
 
 
 def sendLoop():
@@ -33,24 +26,42 @@ def sendLoop():
 
 def sendTasks():
     while(tasks.getNumTasks()>0):   
-        print("NUMERO DE TAREAS A ENVIAR ------------------ ",tasks.getNumTasks())
+        print("NUMERO DE TAREAS A ENVIAR ------------------ ",tasks.getNumTasks(), tasks.getNextTask().toArray())
         print(tasks.getNumTasks())
+        
         sendMsg(tasks.getNextTask().toArray())
         tasks.nextTaskCompleted()
         resetVariables()
 
 
 @eel.expose
+def erease(pointer,action):
+    print("erease---------->",pointer)
+
+    if(not tasks.AreTheretTasksOfType(action)):
+        task = Task([pointer,action,"",1])
+        tasks.addTask(task) 
+    else:
+        #si el puntero apunta a la siguiente posición no hace falta hacer ningun cambio de cursor
+        if pointer == lastPointer-1:
+            print("se borra de forma secuencial",tasks.getNextTask().content)
+            tasks.getNextTask().amount += 1#cuidado puede petar aquí muy facilmente
+        else:
+            task = Task([pointer,action,"",1])
+            tasks.addTask(task)   
+            tasks.getNextTask().print()
+    lastPointer = pointer 
+
+
+@eel.expose
 def edit(action,pointer,text):
     global lastPointer
-    global addedTask
-    global msg
-    print("assssmalesqueeeeee---------->",text)
+    print("insert---------->",text)
 
-    if(not addedTask):
-        task = Task([pointer,"a",text,time.time()])
+    if(not tasks.AreTheretTasksOfType(action)):
+        task = Task([pointer,action,text,0])
+        # print(task.toArray())
         tasks.addTask(task) 
-        addedTask = True
     else:
         #si el puntero apunta a la siguiente posición no hace falta hacer ningun cambio de cursor
         if pointer == lastPointer+1:
@@ -59,7 +70,7 @@ def edit(action,pointer,text):
             
         #si el cursor ya no incrementa de forma consecutiva entonces añadimos una tarea
         else:
-            task = Task([pointer,"a",msg,time.time()])
+            task = Task([pointer,action,text,0])
             tasks.addTask(task)   
             tasks.getNextTask().print()
 

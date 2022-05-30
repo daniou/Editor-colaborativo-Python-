@@ -1,3 +1,7 @@
+from asyncio import tasks
+import time
+
+
 class Tasks:
     taskList = []
     
@@ -25,6 +29,12 @@ class Tasks:
     def getNextTask(self):
         return self.taskList[0]
 
+    def AreTheretTasksOfType(self,type):
+        for t in self.taskList:
+            if t.action == type:
+                return True
+        return False
+
 
 class Task:
     # id=''
@@ -32,6 +42,7 @@ class Task:
     action =''
     content=''
     pointer=''
+    repetitions =''
     timestamp=''
 
     def __init__(self,id,path,action,content):
@@ -45,9 +56,17 @@ class Task:
         self.pointer=args[0]
         self.action=args[1]
         self.content=args[2]
-        self.timestamp=args[3]
+        self.repetitions=args[3]
+        self.timestamp=time.time()
         # print(f"CONSTRUCTORA TASK {self.id}, {self.path}, {self.action}, {self.content}")
     
+    # def __init__(self,args):
+    #     # self.id = id
+    #     self.pointer=args[0]
+    #     self.action=args[1]
+    #     self.amount=args[2]
+    #     # self.timestamp=time.time()
+
     def getFile(self):
         return self.path
 

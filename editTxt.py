@@ -23,7 +23,7 @@ def ereaseInTxt(file,position,amount):
         text = f.read()
         f.seek(position)
         f.truncate()
-        f.write(text[int(position)+int(amount):])
+        f.write(text[int(position+1)+int(amount):])
         f.flush()
         f.close()
 
@@ -31,4 +31,3 @@ def ereaseInTxt(file,position,amount):
 
 # while True:
 #     insertInTxt("foo.txt",1,input())
-

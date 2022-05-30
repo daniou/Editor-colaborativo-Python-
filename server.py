@@ -6,6 +6,9 @@ from Tasks import *
 from time import sleep
 import datetime
 from editTxt import *
+import threading
+
+
 
 HEADER = 64
 PORT = 5050
@@ -26,6 +29,7 @@ def queueTask(task):
 
 #la constructora de task tendra que aceptar la id tambien-----------------------------
 def createTask(id, args):
+    print(args)
     #print("CREANDO TAREA >>>",Task(args).toArray())  
     queueTask(Task(args))
     # #print(f"EL USUARIO {id} HA CREADO LA TAREA {args} ")
@@ -42,7 +46,7 @@ def listen(conn,addr,id):
     
     #print(f"THREAD listening on {SERVER}")
     while handle_client(conn,addr,id): pass
-        # sleep(PERIOD)
+    sleep(PERIOD)
         #print(datetime.datetime.now())
     conn.close()
     #print("Se ha cerrado la conexion")
@@ -61,18 +65,19 @@ def handle_client(conn, addr, id):
             #print("Envio actualizacion")
             sendMsg(conn,"------Actualizacion")
         else:
-            createTask(id,msg)  
+            createTask(id,msg)
 
     return connected
 
 
 
 def executeTask():
+    
     if(tasks.getNumTasks() > 0): 
         task = tasks.getNextTask()
       
         if task.action == "i": 
-            insertInTxt("prueba.txt",task.pointer,task.content),
+            insertInTxt("prueba.txt",task.pointer,task.content)
         elif task.action =="d":
             ereaseInTxt("prueba.txt",task.pointer,task.repetitions)
         
@@ -80,6 +85,7 @@ def executeTask():
             
 
         tasks.nextTaskCompleted()
+    sleep(PERIOD)
 
 def taskExecution():
     while True:
@@ -104,6 +110,8 @@ def start():
         thread.start()
         clients += 1
         #print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
+
+
 
 
 start()

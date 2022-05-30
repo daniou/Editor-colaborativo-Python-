@@ -27,6 +27,8 @@ class Tasks:
         self.taskList.pop(0)
 
     def getNextTask(self):
+        if len(self.taskList) <=0:
+            return
         return self.taskList[0]
 
     def AreTheretTasksOfType(self,type):
@@ -90,4 +92,7 @@ class Task:
 
     
     def toArray(self):
-        return [self.pointer, self.action, self.content, self.timestamp]
+        if self.action == "i":
+            return [self.pointer, self.action, self.content, self.timestamp]
+        else:
+            return [self.pointer, self.action, self.content, self.repetitions]

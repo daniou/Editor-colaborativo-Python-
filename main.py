@@ -10,7 +10,7 @@ from threading import Timer
 import time
 
 
-period = 0
+period = 0.5
 lastPointer = 0
 tasks = Tasks()
 
@@ -59,17 +59,20 @@ def edit(action,pointer,text):
     print("insert---------->",text)
 
     if(not tasks.AreTheretTasksOfType(action)):
+        print("--------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",time.time())
         task = Task([pointer,action,text,0])
         # print(task.toArray())
         tasks.addTask(task) 
     else:
         #si el puntero apunta a la siguiente posición no hace falta hacer ningun cambio de cursor
         if pointer == lastPointer+1:
-            print("se escribe de forma secuencial",tasks.getNextTask().content)
+            print("se escribe de forma secuencial", pointer, " ", lastPointer)
             tasks.getNextTask().content += text
+            print("Contenido de la task: [[[[[[[[[[[[[[[[[[---------------------]]]]]]]]]]]]]]]]]]",tasks.getNextTask().content)
             
         #si el cursor ya no incrementa de forma consecutiva entonces añadimos una tarea
         else:
+            print("NOSESCRBIE DE FORMOWSDMAODAMOP0ASDIOADSIASDIKJB", pointer, " ", lastPointer)
             task = Task([pointer,action,text,0])
             tasks.addTask(task)   
             tasks.getNextTask().print()

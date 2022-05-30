@@ -24,7 +24,7 @@ function KeyCheck(event)
         case 40:
         break;
         default:
-            write(pointer,String.fromCharCode(KeyID))
+            // write(pointer-1,String.fromCharCode(KeyID))
             // write2()
         break;
     }
@@ -56,7 +56,7 @@ function write2()
     {
         text = text.substring(pointer-1,pointer);
     }
-    eel.edit("i",pointer,text);
+    eel.edit("i",pointer-1,text);
     setText(text);
 }
 
